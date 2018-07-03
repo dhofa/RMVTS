@@ -1,0 +1,96 @@
+extends layout
+
+block content
+
+ section.content-header
+  h3
+   | Select periode
+  input(type='date', id='periode')
+  input#cariGPS.btn.btn-success.mybutton(type="button", value="Search")
+
+ // Main content
+ section.content
+  // Default box
+  .box
+   .box-body.no-padding
+   table.table.table-striped
+    tr
+     th No
+     th images
+     th Created At
+     th Images File
+    each dd, i in data_images
+     tr
+      td #{i+1}
+      td #{dd.images}
+      td
+       span.badge.bg-green #{dd.created}
+      td
+       a.klik_image.btn.btn-success(link_image="#{dd.link_images}", href="javascript:;") See Images
+   // /.box-body
+   .box-footer
+    | Find The Driver
+   // /.box-footer
+  // /.box
+ // /.content
+
+ #modal-success.modal.modal-success.fade
+   .modal-dialog
+    .modal-content
+     .modal-header
+      button.close(type='button', data-dismiss='modal', aria-label='Close')
+       span(aria-hidden='true') ×
+      h4.modal-title Snap Capture
+     .modal-body
+      img.img-responsive.img-thumbnail#the_image
+     .modal-footer
+      button.btn.btn-outline(type='button', data-dismiss='modal') Close
+    // /.modal-content
+   // /.modal-dialog
+  // /.modal
+
+ script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+ script.
+  $(function(){
+   $('.klik_image').click(function(){
+    var link_image = $(this).attr('link_image');
+    $('#the_image').attr('src', link_image);
+    $('#modal-success').modal('show');
+   })
+  });
+
+ style.
+     .button {
+     background-color: #4CAF50; /* Green */
+     border: none;
+     color: white;
+     padding: 8px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 12px;
+     margin: 4px 2px;
+     cursor: pointer;
+     }
+     .mybutton {
+     border-radius: 10px;
+     margin-left : 5px;
+     }
+
+ script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js')
+ //script(src='http://localhost:3000/socket.io/socket.io.js')
+ script.
+  var sc = io.connect('https://rmvts.herokuapp.com/');
+  //var sc = io.connect('http://localhost:3000/');
+  var btnSearch = document.getElementById('cariGPS');
+  var periode_value = document.getElementById("periode").value;
+
+
+  btnSearch.addEventListener('click', ()=>{
+   sc.emit('get_current_gps', {msg: periode_value});
+   console.log("periode_value");
+  });
+
+  sc.on('get_current_gps', (data)=>{
+   console.log(data.msg);
+  });

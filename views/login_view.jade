@@ -1,0 +1,116 @@
+doctype html
+html(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    // Meta, title, CSS, favicons, etc.
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title RMVTS
+    // Bootstrap
+    link(href='https://rmvts.herokuapp.com/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    // Font Awesome
+    link(href='https://rmvts.herokuapp.com/vendors/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+    // NProgress
+    link(href='https://rmvts.herokuapp.com/vendors/nprogress/nprogress.css', rel='stylesheet')
+    // Animate.css
+    link(href='https://rmvts.herokuapp.com/vendors/animate.css/animate.min.css', rel='stylesheet')
+    // Custom Theme Style
+    link(href='https://rmvts.herokuapp.com/build/css/custom.min.css', rel='stylesheet')
+  body.login
+    div
+      a#signup.hiddenanchor
+      a#signin.hiddenanchor
+      .login_wrapper
+        .animate.form.login_form
+          section.login_content
+            form(action='/login/signin', method='post')
+              h1 Login Form
+              div
+                input.form-control(name='email', type='text', placeholder='Email', required='', autofocus='true')
+              div
+                input.form-control(name='password', type='password', placeholder='Password', required='')
+              div
+                button.btn.btn-default.submit(type='submit') Log in
+              .clearfix
+              .separator
+                p.change_link
+                  | Dont have account?
+                  a.to_register(href='#signup')  Create Account
+                .clearfix
+                br
+                div
+                  p Real-time Monitoring Vehicle Tracking System
+                  p ©2018 RMVTS
+        #register.animate.form.registration_form
+          section.login_content
+            form(action='/login/signup', method='post')
+              h1 Create Account
+              div
+                input.form-control(name='signup_email', type='email', placeholder='Email', required='true')
+              div
+                input.form-control(name='signup_password', type='password', placeholder='Password', required='true')
+              p Vehicle Data Info
+              div
+                input.form-control(name='signup_owner', type='text', placeholder='Owner', required='true')
+              div
+                input.form-control(name='signup_plate_number', type='text', placeholder='Plate number', required='true')
+              div
+                input.form-control(name='signup_address', type='text', placeholder='Address', required='true')
+              div
+                input.form-control(name='signup_vehicle_type', type='text', placeholder='Vehicle Type', required='true')
+              div
+                button.btn.btn-default.submit(type='submit') Submit
+              .clearfix
+              .separator
+                p.change_link
+                  | Already a member ?
+                  a.to_register(href='#signin')  Log in
+                .clearfix
+                br
+                div
+                  p Real-time Monitoring Vehicle Tracking System
+                  p ©2018 RMVTS
+    #modal-failed-signup.modal.fade(tabindex="-1", role="dialog", aria-hidden="true")
+      .modal-dialog.modal-dialog-centered(role="document")
+        .modal-content
+          .modal-header
+            center 
+              h5#exampleModalLongTitle.modal-title Failed To Create Account
+            button.close(type="button", data-dismiss="modal")
+              span(aria-hidden="true") ×
+          |       
+          .modal-body
+            center
+              | Your email address already used, please try again and use different email address
+          |       
+          .modal-footer        
+            button.btn.btn-primary(type="button", data-dismiss="modal") Ok
+
+    #modal-failed-login.modal.fade(tabindex="-1", role="dialog", aria-hidden="true")
+      .modal-dialog.modal-dialog-centered(role="document")
+        .modal-content
+          .modal-header
+            center 
+              h5#exampleModalLongTitle.modal-title Failed To Login
+            button.close(type="button", data-dismiss="modal")
+              span(aria-hidden="true") ×
+          |       
+          .modal-body
+            center
+              | Your email and password don't match !
+          |       
+          .modal-footer        
+            button.btn.btn-primary(type="button", data-dismiss="modal") Try Again
+
+    script(src='https://rmvts.herokuapp.com/vendors/jquery/dist/jquery.min.js')
+    script(src='https://rmvts.herokuapp.com/vendors/bootstrap/dist/js/bootstrap.min.js')
+    script.
+      $(function(){
+        if(window.location.search.slice(7) == 1) {
+          $('#modal-failed-signup').modal('show')
+        }else if(window.location.search.slice(7) == 2){
+          $('#modal-failed-login').modal('show')          
+        }
+      })
+  

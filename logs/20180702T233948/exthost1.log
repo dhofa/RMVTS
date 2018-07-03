@@ -1,0 +1,28 @@
+[2018-07-02 23:39:52.157] [exthost1] [info] extension host started
+[2018-07-02 23:39:52.181] [exthost1] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:39:52.181] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/out/extension
+[2018-07-02 23:39:52.793] [exthost1] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:39:52.793] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/out/main
+[2018-07-02 23:39:53.116] [exthost1] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:39:53.116] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/out/extension
+[2018-07-02 23:39:53.149] [exthost1] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:39:53.149] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/search-rg/out/extension
+[2018-07-02 23:39:53.201] [exthost1] [info] ExtensionService#_doActivateExtension ms-vscode.atom-keybindings {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:39:53.201] [exthost1] [info] ExtensionService#loadCommonJSModule /home/dhofa/.vscode/extensions/ms-vscode.atom-keybindings-3.0.4/extension
+[2018-07-02 23:39:53.218] [exthost1] [info] eager extensions activated
+[2018-07-02 23:40:08.643] [exthost1] [info] extension host started
+[2018-07-02 23:40:08.691] [exthost1] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:40:08.691] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/out/extension
+[2018-07-02 23:40:08.769] [exthost1] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:40:08.769] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/out/main
+[2018-07-02 23:40:09.014] [exthost1] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:40:09.014] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/out/extension
+[2018-07-02 23:40:09.035] [exthost1] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:40:09.035] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/search-rg/out/extension
+[2018-07-02 23:40:09.044] [exthost1] [info] ExtensionService#_doActivateExtension ms-vscode.atom-keybindings {"startup":true,"activationEvent":"*"}
+[2018-07-02 23:40:09.044] [exthost1] [info] ExtensionService#loadCommonJSModule /home/dhofa/.vscode/extensions/ms-vscode.atom-keybindings-3.0.4/extension
+[2018-07-02 23:40:09.049] [exthost1] [info] eager extensions activated
+[2018-07-03 00:11:56.413] [exthost1] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2018-07-03 00:11:56.413] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/typescript-language-features/out/extension
+[2018-07-03 00:12:08.023] [exthost1] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2018-07-03 00:12:08.023] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/extension-editing/out/extension

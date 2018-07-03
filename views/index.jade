@@ -1,0 +1,80 @@
+extends layout
+
+block content
+  .row.top_tiles
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats
+        .icon
+          i.fa.fa-globe
+        - var date_location = JSON.stringify(last_location.time).split("T")
+        - var time_location = date_location[1].split(".")
+        - var jam_location  = time_location[0].split(":")
+        .count= jam_location[0]+":"+jam_location[1]
+        h3 Locations
+        p #{last_location.time}
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats
+        .icon
+          i.fa.fa-photo
+        - var date_image = JSON.stringify(last_image_capture.time).split("T")
+        - var time_image = date_image[1].split(".")
+        - var jam_image  = time_image[0].split(":")
+        .count= jam_image[0]+":"+jam_image[1]
+        h3 Driver
+        p #{last_image_capture.time}
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats
+        .icon
+          i.fa.fa-bolt
+        - var date_ignition = JSON.stringify(last_state_ignition.time).split("T")
+        - var time_ignition = date_ignition[1].split(".")
+        - var jam_ignition  = time_ignition[0].split(":")
+        .count= jam_ignition[0]+":"+jam_ignition[1]
+        h3 Ignition
+        p #{last_state_ignition.time}
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats
+        .icon
+          i.fa.fa-industry
+        - var date_vibration = JSON.stringify(last_state_vibration.time).split("T")
+        - var time_vibration = date_vibration[1].split(".")
+        - var jam_vibration  = time_vibration[0].split(":")
+        .count= jam_vibration[0]+":"+jam_vibration[1]
+        h3 Vibration
+        p #{last_state_vibration.time}
+  .row
+    .col-md-6
+      img#gambar_kendaraan(src='https://rmvts.herokuapp.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px")
+    #googleMaps.col-md-6(style='height:380px;')
+    
+      script.
+        // Save data email and username in localstorage
+        if (typeof(Storage) !== "undefined") {
+          var username = !{JSON.stringify(username)};
+          var email    = !{JSON.stringify(email)};
+          localStorage.setItem("username",username);
+          localStorage.setItem("email",email);
+        }
+
+        //handle click action
+        var btn_image = document.getElementById("gambar_kendaraan");
+        var link_image= !{JSON.stringify(last_image_capture.last_driver_photos)};
+        btn_image.addEventListener('click', ()=>{
+          document.getElementById("gambar_kendaraan").src = link_image;
+        });
+
+        //handle maps view
+        function initMap(){
+          var latitude  = !{JSON.stringify(last_location.last_latitude)};
+          var longitude = !{JSON.stringify(last_location.last_longitude)};
+          var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
+          var mapnya = document.getElementById('googleMaps');
+          var map = new google.maps.Map(mapnya, options);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latitude,longitude),
+            map: map
+          });
+        }
+
+      script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7cRhqkBNwk5lsfw3HKBHO3PfV1Yv_yPU&callback=initMap')
+

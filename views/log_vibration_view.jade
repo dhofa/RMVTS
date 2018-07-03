@@ -1,0 +1,72 @@
+extends layout
+
+block content
+
+ section.content-header
+  h3
+   | Select periode
+  input(type='date', id='periode')
+  input#cariGPS.btn.btn-success.mybutton(type="button", value="Search")
+
+ // Main content
+ section.content
+  // Default box
+  .box
+   .box-body.no-padding
+   table.table.table-striped
+    tr
+     th No
+     th Title
+     th Message
+     th Created At
+    each dd, i in datavibration
+     tr
+      td #{i+1}
+      td #{dd.title}
+      td #{dd.detail}
+      td
+       span.badge.bg-green #{dd.created}
+   // /.box-body
+   .box-footer
+    | Find Your Locations
+   // /.box-footer
+  // /.box
+ // /.content
+
+
+ style.
+     .button {
+     background-color: #4CAF50; /* Green */
+     border: none;
+     color: white;
+     padding: 8px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 12px;
+     margin: 4px 2px;
+     cursor: pointer;
+     }
+     .mybutton {
+     border-radius: 10px;
+     margin-left : 5px;
+     }
+
+
+ script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js')
+ //script(src='http://localhost:3000/socket.io/socket.io.js')
+ script.
+  var sc = io.connect('https://rmvts.herokuapp.com/');
+  //var sc = io.connect('http://localhost:3000/');
+  var btnSearch = document.getElementById('cariGPS');
+  var periode_value = document.getElementById("periode").value;
+
+
+  btnSearch.addEventListener('click', ()=>{
+   sc.emit('get_current_gps', {msg: periode_value});
+   console.log("periode_value");
+  });
+
+  sc.on('get_current_gps', (data)=>{
+   console.log(data.msg);
+  });

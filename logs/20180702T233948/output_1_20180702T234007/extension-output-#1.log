@@ -1,0 +1,76 @@
+Looking for git in: git
+Using git 2.18.0 from git
+> git rev-parse --show-toplevel
+> git config --get commit.template
+Open repository: /home/dhofa/Desktop/RMVTS_API
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+fatal: no upstream configured for branch 'master'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :views/login_view.jade
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :views/log_camera_view.jade
+> git show :views/login_view.jade
+> git show :views/log_camera_view.jade
+> git show :views/login_view.jade
+> git show :views/log_camera_view.jade
+> git show :views/login_view.jade
+> git show :views/log_camera_view.jade
+> git show :views/login_view.jade
+> git show :views/log_camera_view.jade
+> git show :views/login_view.jade
+> git show :views/layout.jade
+> git show :views/login_view.jade
+> git show :views/layout.jade
+> git show :views/login_view.jade
+> git check-ignore -z --stdin
+> git show :routes/login_router.js
+> git show :views/login_view.jade
+> git show :routes/login_router.js
+> git show :views/login_view.jade
+> git show :routes/login_router.js
+> git show :views/login_view.jade
+> git show :routes/login_router.js
+> git show :views/login_view.jade
+> git show :routes/login_router.js
+> git show :views/login_view.jade
+> git check-ignore -z --stdin
+> git show :views/login_view.jade
+> git show :views/login_view.jade
+> git check-ignore -z --stdin
+> git show :middleware/check_auth.js
+> git show :views/login_view.jade
+> git show :views/login_view.jade
+> git show :views/login_view.jade
+> git check-ignore -z --stdin
+> git show :config/database.js
+> git show :views/login_view.jade
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :routes/login_router.js
+> git show :views/login_view.jade
+> git show :routes/index.js
+> git check-ignore -z --stdin
+> git show :views/index.jade
+> git show :views/layout.jade
+> git show :views/log_camera_view.jade
+> git show :views/layout.jade
+> git show :views/login_view.jade
+> git show :views/layout.jade
+> git show :views/log_camera_view.jade
+> git show :views/layout.jade
+> git show :views/login_view.jade
+> git show :views/layout.jade
+> git show :routes/login_router.js
+> git show :views/layout.jade
+> git show :middleware/check_auth.js
+> git show :views/layout.jade
+> git show :routes/index.js
+> git show :views/layout.jade

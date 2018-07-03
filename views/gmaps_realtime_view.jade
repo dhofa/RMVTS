@@ -1,0 +1,41 @@
+extends layout
+
+block content
+   // Main content
+   section.content
+    // Default box
+    .box
+     .box-body
+      #googleMaps.col-md-12(style='height:525px')
+     // /.box-body
+     .box-footer
+      | Check your location.
+     // /.box-footer
+    // /.box
+   // /.content
+   
+   script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js')
+   //script(src='http://localhost:3000/socket.io/socket.io.js')
+   script.
+    var sc = io.connect('https://rmvts.herokuapp.com/');
+    //var sc = io.connect('http://localhost:3000/');
+    function initMap(){
+     var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
+     var mapnya = document.getElementById('googleMaps');
+     var map = new google.maps.Map(mapnya, options);
+
+     var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(-7.279429, 112.791753),
+      map: map
+     });
+
+     sc.on('send_data_to_client', function(data){
+      var posisi_kendaraan = new google.maps.LatLng(data.latitude, data.longitude);
+      console.log('latitude =>', data.latitude);
+      console.log('longitude =>', data.longitude);
+
+      marker.setPosition(posisi_kendaraan);
+     });
+    }
+
+   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7cRhqkBNwk5lsfw3HKBHO3PfV1Yv_yPU&callback=initMap')

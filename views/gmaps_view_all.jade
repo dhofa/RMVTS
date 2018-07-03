@@ -1,0 +1,112 @@
+extends layout
+
+block content
+   section.content-header
+    form(action='/gmaps/date', method='post')
+     input(name='periode', id='periode', type='date')
+     button.btn.btn-success.mybutton(type='submit') Search
+
+   // Main content
+   section.content
+    // Default box
+    .box
+     .box-body
+      #googleMaps.col-md-12(style='height:480px')
+     // /.box-body
+     .box-footer
+      | Check your location.
+     // /.box-footer
+    // /.box
+   // /.content
+
+   style.
+       .button {
+       background-color: #4CAF50; /* Green */
+       border: none;
+       color: white;
+       padding: 8px;
+       text-align: center;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 12px;
+       margin: 4px 2px;
+       cursor: pointer;
+       }
+       .mybutton {
+       border-radius: 10px;
+       margin-left : 5px;
+       }
+
+   script.
+    //set default date today
+    //if(document.getElementById("periode").value.equals("mm/dd/yyyy")){
+      document.getElementById("periode").valueAsDate = new Date();
+    //}
+
+    //var btnSearch = document.getElementById("cariGPS");
+    //btnSearch.addEventListener('click', ()=>{
+    //  var periode_value = document.getElementById("periode").value;
+    //  var url = "http://localhost:3000/gmaps/all/"+periode_value;
+    //  window.location.href = url;
+    //});
+
+   script.
+    function initMap(){
+     var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
+     var mymap = document.getElementById('googleMaps');
+     var map = new google.maps.Map(mymap, options);
+     var locations = !{JSON.stringify(datalokasi)};
+     var infoWindow = new google.maps.InfoWindow();
+     var marker, i;
+     var rute = {};
+     var data_rute = [];
+
+     var iconBase = 'https://rmvts.herokuapp.com/images/';
+     //var iconBase = 'http://localhost:3000/images/';
+
+     for(i=0; i<locations.length; i++){
+      marker = new google.maps.Marker({
+       position: new google.maps.LatLng(locations[i].latitude, locations[i].longitude),
+       icon: iconBase + 'motorcycle.png',
+       map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+       return function() {
+        var pos = i+1;
+        infoWindow.setContent("Posisi ke-"+pos);
+        infoWindow.open(map, marker);
+       }
+      })(marker, i));
+
+      if(locations[1].latitude != 0 && locations[i].longitude != 0){
+       data_rute.push({
+        "lat":locations[i].latitude,
+        "lng":locations[i].longitude
+       });
+      }
+     }
+     //menyimpan data array
+     rute.data_rute = data_rute;
+
+     var lineSymbol = {
+       path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+     };
+
+     var flightPath = new google.maps.Polyline({
+      path: rute.data_rute,
+      icons: [{
+        icon: lineSymbol,
+        offset: '100%',
+        repeat: '20px'
+      }],
+      geodesic: true,
+      strokeColor: '#0000FF',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+     });
+
+     flightPath.setMap(map);
+    }
+
+   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7cRhqkBNwk5lsfw3HKBHO3PfV1Yv_yPU&callback=initMap')

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+   // Main content
+   section.content
+    // Default box
+    .box
+     .box-body
+      #googleMaps.col-md-12(style='height:525px')
+     // /.box-body
+     .box-footer
+      | Check your location.
+     // /.box-footer
+    // /.box
+   // /.content
+
+   script.
+    function initMap(){
+     var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
+     var mapnya = document.getElementById('googleMaps');
+     var map = new google.maps.Map(mapnya, options);
+     var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(!{JSON.stringify(lat)},!{JSON.stringify(long)}),
+      map: map
+     });
+    }
+
+   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7cRhqkBNwk5lsfw3HKBHO3PfV1Yv_yPU&callback=initMap')
