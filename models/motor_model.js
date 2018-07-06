@@ -5,7 +5,7 @@ const motorSchema = mongoose.Schema({
   plate_number : {type: String,default:"No Data.."},
   address      : {type: String,default:"No Data.."},
   vehicle_type : {type: String,default:"No Data.."},
-  user_photos  : {type: String, default:"https:rmvts.herokuapp.com/images/motor.jpg"},
+  user_photos  : {type: String, default:"https:rmvts.jagopesan.com/images/motor.jpg"},
   last_state_ignition: {
    status : {type: String,default:"No Data.."},
    time   : {type: Date, default: Date.now}
@@ -20,7 +20,7 @@ const motorSchema = mongoose.Schema({
     time   : {type: Date, default: Date.now}    
   },
   last_image_capture: {
-    last_driver_photos : {type: String, default:"https:rmvts.herokuapp.com/images/motor.jpg"},
+    last_driver_photos : {type: String, default:"https:rmvts.jagopesan.com/images/motor.jpg"},
     time   : {type: Date, default: Date.now}    
   }
  },
