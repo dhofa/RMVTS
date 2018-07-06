@@ -260,7 +260,8 @@ exports.uploadImages = (req, res)=>{
    return res.end("error uploading file");
   }
   //let base_location = "http://localhost:3000/uploads/driver/";
-  let base_location = "https://rmvts.herokuapp.com/uploads/driver/";
+  // let base_location = "https://rmvts.herokuapp.com/uploads/driver/";
+  let base_location = "https://rmvts.jagopesan.com/uploads/driver/";
   let locations = base_location+req.file.originalname;
   var pushImageData = {$push: {driver: {images: req.file.originalname,link_images: locations, created:new Date().toISOString()}}};
 
@@ -291,7 +292,8 @@ exports.uploadImagesProfile = (req, res, next)=>{
    return res.end("error uploading foto profile");
   }
   //let base_location = "http://localhost:3000/uploads/";
-  let base_location = "https://rmvts.herokuapp.com/uploads/";
+  //let base_location = "https://rmvts.herokuapp.com/uploads/";
+  let base_location = "https://rmvts.jagopesan.com/uploads/";
   var pushImageData = {"vehicle_data.user_photos": base_location+id_user+"/profile/profile.jpg"};
   MotorSchema.findByIdAndUpdate(id_user, pushImageData, (err, data)=>{
    if(err){
