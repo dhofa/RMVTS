@@ -134,6 +134,8 @@ block content
     var gps = document.getElementById('statusgps');
     var btnAmbilFoto = document.getElementById('takePicture');
     var pesanFoto = document.getElementById('fotoMessage');
+    var link_image= !{JSON.stringify(last_driver_photos)};
+    document.getElementById("gambar_kendaraan").src = link_image;
 
     btnAmbilFoto.addEventListener('click', ()=>{
       this.sc.emit('ambilfoto', {msg: current_time});
@@ -233,4 +235,10 @@ block content
     sc.on('ambilfoto', (data)=>{
      console.log(data.msg);
      pesanFoto.innerHTML = data.msg.toUpperCase()+" success..";
+    });
+
+    sc.on('refresh_foto', (data)=>{
+     if(data.msg){
+      location.reload(true);
+     }
     });
