@@ -3,6 +3,8 @@ const router = express.Router();
 const async = require('async');
 const MotorSchema = require('../models/motor_model');
 const checkAuth = require('../middleware/check_auth');
+const mongoose   = require('mongoose');
+
 
 router.get('/', checkAuth, function(req, res) {
   async.series({
@@ -20,18 +22,53 @@ router.get('/', checkAuth, function(req, res) {
 });
 
 
-router.get('/tanggal_periode', function(req, res) {
-  MotorSchema.find()
-          .populate({ "koordinat.periode": { $regex: /req.params.tanggal_periode/ } })
-          .then(function(data){
-            res.render('log_gps_view', {
-              datalokasi: data
-            });
-          })
-          .catch(function(error) {
-            console.log(error);
-            res.status(500).json({error});
-          });
+/* GET users listing. */
+router.get('/:tanggal_periode', checkAuth,function(req, res) {
+  var today  = new Date(req.params.tanggal_periode);
+  var nextday= new Date(today);
+  nextday.setDate(today.getDate()+1);
+  console.log("today =>", today);
+  console.log("nextDay =>", nextday);
+
+  MotorSchema.aggregate([
+   {
+    $unwind: "$driver"
+   },
+   {
+     $match:
+       {
+         _id: mongoose.Types.ObjectId(req.userData.userId),
+         "driver.created": {
+           $gte: today,
+           $lt : nextday
+         }
+       }
+   },
+   {
+    $project: {
+     koordinat: 1,
+     _id: 0
+    }
+   },
+   {
+    $replaceRoot:{newRoot: "$driver"} //ini untuk mengganti root default dari object
+   },
+   {
+    $sort: {
+     "driver.created": -1
+    }
+   }
+  ]).exec(function(err, data){
+   if(err){
+    console.log(err);   
+   }
+
+   console.log(data);
+   res.render('log_camera_view',{
+    data_images: data
+  });
+  });
+
 });
 
 module.exports = router;
