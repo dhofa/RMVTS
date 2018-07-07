@@ -46,15 +46,15 @@ block content
         br
         br
 
-        label Take Picture
-        br
-        input#takePicture.btn.btn-success(type="button", value="Take a picture")
-        br
-        label#fotoMessage
-
       .col-md-9
         img#gambar_kendaraan(src='https://rmvts.jagopesan.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px")
         
+        label Take Picture
+        br
+        input#takePicture.btn.btn-success(type="button", value="Snap Capture")
+        br
+        label#fotoMessage
+      
       style.
        /* The switch - the box around the slider */
         .switch {
@@ -135,6 +135,14 @@ block content
     var gps = document.getElementById('statusgps');
     var btnAmbilFoto = document.getElementById('takePicture');
     var pesanFoto = document.getElementById('fotoMessage');
+
+    //handle click action
+    var btn_image = document.getElementById("gambar_kendaraan");
+    var link_image= !{JSON.stringify(last_driver_photos)};
+    
+    btn_image.addEventListener('click', ()=>{
+      document.getElementById("gambar_kendaraan").src = link_image;
+    });
 
     btnAmbilFoto.addEventListener('click', ()=>{
       this.sc.emit('ambilfoto', {msg: current_time});
@@ -233,5 +241,5 @@ block content
 
     sc.on('ambilfoto', (data)=>{
      console.log(data.msg);
-     pesanFoto.innerHTML = data.msg.toUpperCase()+" success..";
+     pesanFoto.innerHTML = data.msg.toUpperCase()+" Taking Picture..";
     });
