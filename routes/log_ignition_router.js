@@ -22,7 +22,7 @@ router.get('/', checkAuth, function(req, res) {
 });
 
 /* GET users listing. */
-router.get('/tanggal_periode', function(req, res) {
+router.get('/:tanggal_periode', function(req, res) {
   var today  = new Date(req.query.periode);
   var nextday= new Date(today);
   nextday.setDate(today.getDate()+1);
