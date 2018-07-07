@@ -63,6 +63,7 @@ router.get('/:tanggal_periode', function(req, res) {
     console.log(err);   
    }
 
+   console.log(data);
    res.render('log_gps_view',{
     datalokasi: data
    });
