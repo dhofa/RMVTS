@@ -5,7 +5,7 @@ block content
  section.content-header
   h3
    | Select periode
-  input#periode(type='date')
+  input#periode_data(type="date")
   input#cariGPS.btn.btn-success.mybutton(type="button", value="Search")
 
  // Main content
@@ -64,9 +64,9 @@ block content
   //var sc = io.connect('https://rmvts.herokuapp.com/');  
   //var sc = io.connect('http://localhost:3000/');
   var btnSearch = document.getElementById('cariGPS');
-  var periode_value = document.getElementById('periode').value;
 
   btnSearch.addEventListener('click', ()=>{
+   var periode_value = document.getElementById('periode_data').value;
    console.log(periode_value); 
    var urlPath = "https://rmvts.jagopesan.com/log_gps/"+periode_value;
    window.location = urlPath;
