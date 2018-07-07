@@ -23,19 +23,50 @@ router.get('/', checkAuth, function(req, res) {
 
 /* GET users listing. */
 router.get('/tanggal_periode', function(req, res) {
-  MotorSchema.find()
-          .populate({ periode: { $regex: /req.params.tanggal_periode/ } })
-          .select('_id latitude longitude created')
-          // .limit(5)
-          .then(function(data){
-            res.render('log_gps_view', {
-              datalokasi: data
-            });
-          })
-          .catch(function(error) {
-            console.log(error);
-            res.status(500).json({error});
-          });
+  var today  = new Date(req.query.periode);
+  var nextday= new Date(today);
+  nextday.setDate(today.getDate()+1);
+
+  console.log(req.query.periode);
+  console.log(today);
+  console.log(nextday);
+  MotorSchema.aggregate([
+  {
+   $unwind: "$ignition"
+  },
+  {
+    $match:
+      {
+        _id: mongoose.Types.ObjectId(req.userData.userId),
+        "ignition.created": {
+          $gte: today,
+          $lt : nextday
+        }
+      }
+  },
+  {
+   $project: {
+    ignition: 1,
+    _id: 0
+   }
+  },
+  {
+   $replaceRoot:{newRoot: "$ignition"} //ini untuk mengganti root default dari object koordinat
+  },
+  {
+   $sort: {
+    "ignition.created": -1
+   }
+  }
+ ]).exec(function(err, data){
+  if(err){
+    console.log(err);
+  }
+
+  res.render('log_ignition_view',{
+    dataignition: data
+   });
+ });
 });
 
 module.exports = router;

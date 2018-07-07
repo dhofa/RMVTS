@@ -6,7 +6,7 @@ block content
   h3
    | Select periode
   input#periode_data(type="date")
-  input#cariGPS.btn.btn-success.mybutton(type="button", value="Search")
+  input#cariVibration.btn.btn-success.mybutton(type="button", value="Search")
 
  // Main content
  section.content
@@ -53,7 +53,7 @@ block content
      }
 
  script.
-  var btnSearch = document.getElementById('cariGPS');
+  var btnSearch = document.getElementById('cariVibration');
 
   btnSearch.addEventListener('click', ()=>{
    var periode_value = document.getElementById('periode_data').value;
