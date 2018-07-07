@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const async = require('async');
 const checkAuth = require('../middleware/check_auth');
-
-var MotorSchema = require('../models/motor_model');
+const mongoose   = require('mongoose');
+const MotorSchema = require('../models/motor_model');
 
 
 /* GET users listing. */
