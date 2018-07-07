@@ -64,11 +64,11 @@ block content
   //var sc = io.connect('https://rmvts.herokuapp.com/');  
   //var sc = io.connect('http://localhost:3000/');
   var btnSearch = document.getElementById('cariGPS');
-  var periode_value = document.getElementById("periode").value;
+  var periode_value = document.getElementById('periode').value;
 
   btnSearch.addEventListener('click', ()=>{
    console.log(periode_value); 
-   var urlPath = "https://rmvts.jagopesan.com/log_gps/cyukk"+periode_value;
+   var urlPath = "https://rmvts.jagopesan.com/log_gps/"+periode_value;
    window.location = urlPath;
   });
 
