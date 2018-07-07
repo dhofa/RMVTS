@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const async = require('async');
-const checkAuth = require('../middleware/check_auth');
-
-var MotorSchema = require('../models/motor_model');
+const express    = require('express');
+const router     = express.Router();
+const async      = require('async');
+const checkAuth  = require('../middleware/check_auth');
+const mongoose   = require('mongoose');
+const MotorSchema = require('../models/motor_model');
 
 /* GET users listing. */
 router.get('/', checkAuth, function(req, res) {
@@ -23,7 +23,7 @@ router.get('/', checkAuth, function(req, res) {
 
 
 /* GET users listing. */
-router.get('/:tanggal_periode', function(req, res) {
+router.get('/:tanggal_periode', checkAuth,function(req, res) {
   var today  = new Date(req.params.tanggal_periode);
   var nextday= new Date(today);
   nextday.setDate(today.getDate()+1);
