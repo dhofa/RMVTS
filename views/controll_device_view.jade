@@ -142,7 +142,7 @@ block content
 
     //handle click action
     var btn_image = document.getElementById("gambar_kendaraan");
-    var link_image= !{JSON.stringify(last_image_capture.last_driver_photos)};
+    var link_image= !{JSON.stringify(last_driver_photos)};
     btn_image.addEventListener('click', ()=>{
       document.getElementById("gambar_kendaraan").src = link_image;
     });
