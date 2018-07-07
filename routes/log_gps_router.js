@@ -21,13 +21,52 @@ router.get('/', checkAuth, function(req, res) {
            });
 });
 
+
 /* GET users listing. */
 router.get('/:tanggal_periode', function(req, res) {
-  var today   = new Date(req.params.tanggal_periode);
-  var nextDay = new Date(today.getDate()+1);
-
+  var today  = new Date(req.params.tanggal_periode);
+  var nextday= new Date(today);
+  nextday.setDate(today.getDate()+1);
   console.log("today =>", today);
   console.log("nextDay =>", nextDay);
+
+  MotorSchema.aggregate([
+   {
+    $unwind: "$koordinat"
+   },
+   {
+     $match:
+       {
+         _id: mongoose.Types.ObjectId(req.userData.userId),
+         "koordinat.created": {
+           $gte: today,
+           $lt : nextday
+         }
+       }
+   },
+   {
+    $project: {
+     koordinat: 1,
+     _id: 0
+    }
+   },
+   {
+    $replaceRoot:{newRoot: "$koordinat"} //ini untuk mengganti root default dari object koordinat
+   },
+   {
+    $sort: {
+     "koordinat.created": -1
+    }
+   }
+  ]).exec(function(err, data){
+   if(err){
+    console.log(err);   
+   }
+
+   res.render('log_gps_view',{
+    datalokasi: data
+   });
+  });
 
 });
 
