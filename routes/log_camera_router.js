@@ -7,7 +7,7 @@ const checkAuth = require('../middleware/check_auth');
 router.get('/', checkAuth, function(req, res) {
   async.series({
    driver: (cb)=>{
-     MotorSchema.findById("5af166ddaf533a4b9c3fc0d6").exec((err, data)=>{
+     MotorSchema.findById(req.userData.userId).exec(function(err, data){
        if(err) return console.log(err);
          cb(err, data.driver);
        });
