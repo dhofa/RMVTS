@@ -5,7 +5,7 @@ block content
  section.content-header
   h3
    | Select periode
-  input(type='date', id='periode')
+  input#periode_data(type="date")
   input#cariGPS.btn.btn-success.mybutton(type="button", value="Search")
 
  // Main content
@@ -52,23 +52,13 @@ block content
      margin-left : 5px;
      }
 
-
- script(src='https://rmvts.jagopesan.com/socket.io/socket.io.js')
- //script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js') 
- //script(src='http://localhost:3000/socket.io/socket.io.js')
  script.
-  var sc = io.connect('https://rmvts.jagopesan.com/');
-  //var sc = io.connect('https://rmvts.herokuapp.com/');  
-  //var sc = io.connect('http://localhost:3000/');
   var btnSearch = document.getElementById('cariGPS');
-  var periode_value = document.getElementById("periode").value;
-
 
   btnSearch.addEventListener('click', ()=>{
-   sc.emit('get_current_gps', {msg: periode_value});
-   console.log("periode_value");
+   var periode_value = document.getElementById('periode_data').value;
+   console.log(periode_value); 
+   var urlPath = "https://rmvts.jagopesan.com/log_vibration/"+periode_value;
+   window.location = urlPath;
   });
 
-  sc.on('get_current_gps', (data)=>{
-   console.log(data.msg);
-  });

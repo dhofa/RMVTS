@@ -49,13 +49,13 @@ const motorSchema = mongoose.Schema({
  koordinat  :[{
   latitude  : {type: Number, required: true, default: 0},
   longitude : {type: Number, required: true, default: 0},
-  created   : {type: Date  , required: true},
+  created   : {type: Date  , default: Date.now},
   periode   : {type: Date  , required: true}
  }],
  driver:[{
   images      : {type: String, required: true, default: "No Data"},
   link_images : {type: String, required: true, default: "No Data"},
-  created     : {type: Date  , required: true}
+  created     : {type: Date  , default: Date.now}
  }],
  vibration : [{
   title       : {type: String,default:"No Data.."},

@@ -19,24 +19,55 @@ router.get('/', checkAuth, function(req, res) {
             res.render('log_vibration_view',{
              datavibration: data.vibrations
             });
-           });
+           }); 
 });
 
 /* GET users listing. */
-router.get('/tanggal_periode', function(req, res) {
-  MotorSchema.find()
-          .populate({ periode: { $regex: /req.params.tanggal_periode/ } })
-          .select('_id latitude longitude created')
-          // .limit(5)
-          .then(function(data){
-            res.render('log_gps_view', {
-              datalokasi: data
-            });
-          })
-          .catch(function(error) {
-            console.log(error);
-            res.status(500).json({error});
-          });
+router.get('/:tanggal_periode', checkAuth,function(req, res) {
+  var date_now = req.params.tanggal_periode.split("-"); //2018-06-28
+  var today  = new Date(date_now[1]+"-"+date_now[2]+"-"+date_now[0]);
+  var nextday= new Date(today);
+  nextday.setDate(today.getDate()+1);
+  console.log("today =>", today);
+  console.log("nextDay =>", nextday);
+
+  MotorSchema.aggregate([
+  {
+   $unwind: "$vibration"
+  },
+  {
+    $match:
+      {
+        _id: mongoose.Types.ObjectId(req.userData.userId),
+        "vibration.created": {
+          $gte: today,
+          $lt : nextday
+        }
+      }
+  },
+  {
+   $project: {
+    vibration: 1,
+    _id: 0
+   }
+  },
+  {
+   $replaceRoot:{newRoot: "$vibration"} //ini untuk mengganti root default dari object koordinat
+  },
+  {
+   $sort: {
+    "vibration.created": -1
+   }
+  }
+ ]).exec(function(err, data){
+  if(err){
+    concole.log(err);
+  }
+
+  res.render('log_vibration_view',{
+    datavibration: data
+   });
+ });
 });
 
 module.exports = router;
