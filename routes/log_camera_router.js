@@ -24,7 +24,8 @@ router.get('/', checkAuth, function(req, res) {
 
 /* GET users listing. */
 router.get('/:tanggal_periode', checkAuth,function(req, res) {
-  var today  = new Date(req.params.tanggal_periode);
+  var date_now = req.params.tanggal_periode.split("-"); //2018-06-28
+  var today  = new Date(date_now[1]+"-"+date_now[2]+"-"+date_now[0]);
   var nextday= new Date(today);
   nextday.setDate(today.getDate()+1);
   console.log("today =>", today);
