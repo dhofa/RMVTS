@@ -46,7 +46,8 @@ block content
     var btnSearch = document.getElementById("cariGPS");
     btnSearch.addEventListener('click', ()=>{
       var periode_value = document.getElementById("periode").value;
-      var url = "https://rmvts.herokuapp.com/gmaps/all/"+periode_value;
+      var url = "https://rmvts.jagopesan.com/gmaps/all/"+periode_value;      
+      //var url = "https://rmvts.herokuapp.com/gmaps/all/"+periode_value;
       //var url = "http://localhost:3000/gmaps/all/"+periode_value;
       window.location.href = url;
     });
@@ -64,7 +65,8 @@ block content
 
      console.log("periode_value");
 
-     var iconBase = 'https://rmvts.herokuapp.com/images/';
+     var iconBase = 'https://rmvts.jagopesan.com/images/';
+     //var iconBase = 'https://rmvts.herokuapp.com/images/';     
      //var iconBase = 'http://localhost:3000/images/';
 
      for(i=0; i<locations.length; i++){

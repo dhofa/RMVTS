@@ -22,19 +22,4 @@ router.get('/', checkAuth, function(req, res, next){
   });
 });
 
-router.get('/:motorId', function(req, res) {
- async.series({
-  relaystatus: (cb)=>{
-   MotorSchema.findById(req.params.motorId, (err, data)=>{
-    if(err) return console.log(err);
-    cb(err, data.relay);
-   });
-  }
- }, (err, result)=>{
-  console.log(result.relaystatus);
-  res.render('kontrolled-detail', {relay: result.relaystatus, mobilId: req.params.motorId});
- });
-
-});
-
 module.exports = router;
