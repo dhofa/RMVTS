@@ -28,7 +28,7 @@ router.get('/:tanggal_periode', function(req, res) {
   var nextday= new Date(today);
   nextday.setDate(today.getDate()+1);
   console.log("today =>", today);
-  console.log("nextDay =>", nextDay);
+  console.log("nextDay =>", nextday);
 
   MotorSchema.aggregate([
    {
