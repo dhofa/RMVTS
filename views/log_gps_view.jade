@@ -56,16 +56,15 @@ block content
      }
 
 
- script(src='https://rmvts.jagopesan.com/socket.io/socket.io.js')
+ //script(src='https://rmvts.jagopesan.com/socket.io/socket.io.js')
  //script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js')
  //script(src='http://localhost:3000/socket.io/socket.io.js')
  script.
-  var sc = io.connect('https://rmvts.jagopesan.com/');
+  //var sc = io.connect('https://rmvts.jagopesan.com/');
   //var sc = io.connect('https://rmvts.herokuapp.com/');  
   //var sc = io.connect('http://localhost:3000/');
   var btnSearch = document.getElementById('cariGPS');
   var periode_value = document.getElementById("periode").value;
-
 
   btnSearch.addEventListener('click', ()=>{
    console.log(periode_value); 
@@ -73,6 +72,3 @@ block content
    window.location = urlPath;
   });
 
-  sc.on('get_current_gps', (data)=>{
-   console.log(data.msg);
-  });
