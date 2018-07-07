@@ -3,7 +3,6 @@ extends layout
 block content
   // Main content
   section.content
-    // Default box
     .row
       .col-md-3
         .form-group
@@ -146,96 +145,96 @@ block content
     });
 
     gps.addEventListener('change', ()=>{
-    if(gps.checked){
-      sc.emit('statusgps', {msg: true});
-    }
-    else{
-      sc.emit('statusgps', {msg: false});
-    }
+      if(gps.checked){
+        sc.emit('statusgps', {msg: true});
+      }
+      else{
+        sc.emit('statusgps', {msg: false});
+      }
     });
 
     relay1.addEventListener('change', ()=>{
-    if(relay1.checked){
-      sc.emit('relay1', {msg: true});
-    }
-    else{
-      sc.emit('relay1', {msg: false});
-    }
+      if(relay1.checked){
+        sc.emit('relay1', {msg: true});
+      }
+      else{
+        sc.emit('relay1', {msg: false});
+      }
     });
 
     relay2.addEventListener('change', ()=>{
-    if(relay2.checked){
-      sc.emit('relay2', {msg: true});
-    }
-    else{
-      sc.emit('relay2', {msg: false});
-    }
+      if(relay2.checked){
+        sc.emit('relay2', {msg: true});
+      }
+      else{
+        sc.emit('relay2', {msg: false});
+      }
     });
 
     relay3.addEventListener('change', ()=>{
-    if(relay3.checked){
-      sc.emit('relay3', {msg: true});
-    }
-    else{
-      sc.emit('relay3', {msg: false});
-    }
+      if(relay3.checked){
+        sc.emit('relay3', {msg: true});
+      }
+      else{
+        sc.emit('relay3', {msg: false});
+      }
     });
 
     relay4.addEventListener('change', ()=>{
-    if(relay4.checked){
-      sc.emit('relay4', {msg: true});
-    }
-    else{
-      sc.emit('relay4', {msg: false});
-    }
+      if(relay4.checked){
+        sc.emit('relay4', {msg: true});
+      }
+      else{
+        sc.emit('relay4', {msg: false});
+      }
     });
 
     sc.on('statusgps', (data)=>{
-    if(data.msg){
-      gps.checked = true;
-    }
-    else{
-      gps.checked = false;
-    }
+      if(data.msg){
+        gps.checked = true;
+      }
+      else{
+        gps.checked = false;
+      }
     });
 
     sc.on('relay1', (data)=>{
-    if(data.msg){
-      relay1.checked = true;
-    }
-    else{
-      relay1.checked = false;
-    }
+      if(data.msg){
+        relay1.checked = true;
+      }
+      else{
+        relay1.checked = false;
+      }
     });
 
     sc.on('relay2', (data)=>{
-    if(data.msg){
-      relay2.checked = true;
-    }
-    else{
-      relay2.checked = false;
-    }
+      if(data.msg){
+        relay2.checked = true;
+      }
+      else{
+        relay2.checked = false;
+      }
     });
 
     sc.on('relay3', (data)=>{
-    if(data.msg){
-      relay3.checked = true;
-    }
-    else{
-      relay3.checked = false;
-    }
+      if(data.msg){
+        relay3.checked = true;
+      }
+      else{
+        relay3.checked = false;
+      }
     });
 
     sc.on('relay4', (data)=>{
-    if(data.msg){
-      relay4.checked = true;
-    }
-    else{
-      relay4.checked = false;
-    }
+      if(data.msg){
+        relay4.checked = true;
+      }
+      else{
+        relay4.checked = false;
+      }
     });
 
     sc.on('ambilfoto', (data)=>{
-    console.log(data.msg);
-    pesanFoto.innerHTML = data.msg.toUpperCase()+" Taking Picture..";
+      console.log(data.msg);
+      pesanFoto.innerHTML = data.msg.toUpperCase()+" Taking Picture..";
     });
