@@ -68,8 +68,9 @@ block content
 
 
   btnSearch.addEventListener('click', ()=>{
+   console.log(periode_value); 
    var urlPath = "https://rmvts.jagopesan.com/log_gps/"+periode_value;
-   window.history.pushState({"html":datalokasi,"pageTitle":"Log Gps"},"", urlPath);
+   window.location = urlPath;
   });
 
   sc.on('get_current_gps', (data)=>{
