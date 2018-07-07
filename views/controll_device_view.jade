@@ -54,187 +54,187 @@ block content
       .col-md-9
         img#gambar_kendaraan(src='https://rmvts.jagopesan.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px")
       
-      style.
-        /* The switch - the box around the slider */
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 60px;
-          height: 34px;
-        }
+  style.
+    /* The switch - the box around the slider */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
 
-        /* Hide default HTML checkbox */
-        .switch input {display:none;}
+    /* Hide default HTML checkbox */
+    .switch input {display:none;}
 
-        /* The slider */
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ccc;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
 
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
 
-        input:checked + .slider {
-          background-color: #2196F3;
-        }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
 
-        input:focus + .slider {
-          box-shadow: 0 0 1px #2196F3;
-        }
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
 
-        input:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-        }
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
 
-        /* Rounded sliders */
-        .slider.round {
-          border-radius: 34px;
-        }
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
 
-        .slider.round:before {
-          border-radius: 50%;
-        }
+    .slider.round:before {
+      border-radius: 50%;
+    }
 
-      script(src='https://rmvts.jagopesan.com/socket.io/socket.io.js')
-      //script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js')
-      //script(src='http://localhost:3000/socket.io/socket.io.js')
-      script.
-        var d = new Date();
-        var current_time = d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear()+"_"+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-        var sc = io.connect('https://rmvts.jagopesan.com/');    
-        //var sc = io.connect('https://rmvts.herokuapp.com/');
-        //var sc = io.connect('http://localhost:3000/');
-        var relay1 = document.getElementById('relaystatus1');
-        var relay2 = document.getElementById('relaystatus2');
-        var relay3 = document.getElementById('relaystatus3');
-        var relay4 = document.getElementById('relaystatus4');
-        var gps = document.getElementById('statusgps');
-        var btnAmbilFoto = document.getElementById('takePicture');
-        var pesanFoto = document.getElementById('fotoMessage');
+  script(src='https://rmvts.jagopesan.com/socket.io/socket.io.js')
+  //script(src='https://rmvts.herokuapp.com/socket.io/socket.io.js')
+  //script(src='http://localhost:3000/socket.io/socket.io.js')
+  script.
+    var d = new Date();
+    var current_time = d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear()+"_"+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+    var sc = io.connect('https://rmvts.jagopesan.com/');    
+    //var sc = io.connect('https://rmvts.herokuapp.com/');
+    //var sc = io.connect('http://localhost:3000/');
+    var relay1 = document.getElementById('relaystatus1');
+    var relay2 = document.getElementById('relaystatus2');
+    var relay3 = document.getElementById('relaystatus3');
+    var relay4 = document.getElementById('relaystatus4');
+    var gps = document.getElementById('statusgps');
+    var btnAmbilFoto = document.getElementById('takePicture');
+    var pesanFoto = document.getElementById('fotoMessage');
 
-        //handle click action
-        var btn_image = document.getElementById("gambar_kendaraan");
-        var link_image= !{JSON.stringify(last_driver_photos)};
-        
-        btn_image.addEventListener('click', ()=>{
-          document.getElementById("gambar_kendaraan").src = link_image;
-        });
+    //handle click action
+    var btn_image = document.getElementById("gambar_kendaraan");
+    var link_image= !{JSON.stringify(last_driver_photos)};
+    
+    btn_image.addEventListener('click', ()=>{
+      document.getElementById("gambar_kendaraan").src = link_image;
+    });
 
-        btnAmbilFoto.addEventListener('click', ()=>{
-          this.sc.emit('ambilfoto', {msg: current_time});
-          pesanFoto.innerHTML = current_time+" Please Wait...";
-        });
+    btnAmbilFoto.addEventListener('click', ()=>{
+      this.sc.emit('ambilfoto', {msg: current_time});
+      pesanFoto.innerHTML = current_time+" Please Wait...";
+    });
 
-        gps.addEventListener('change', ()=>{
-          if(gps.checked){
-            sc.emit('statusgps', {msg: true});
-          }
-          else{
-            sc.emit('statusgps', {msg: false});
-          }
-        });
+    gps.addEventListener('change', ()=>{
+      if(gps.checked){
+        sc.emit('statusgps', {msg: true});
+      }
+      else{
+        sc.emit('statusgps', {msg: false});
+      }
+    });
 
-        relay1.addEventListener('change', ()=>{
-          if(relay1.checked){
-            sc.emit('relay1', {msg: true});
-          }
-          else{
-            sc.emit('relay1', {msg: false});
-          }
-        });
+    relay1.addEventListener('change', ()=>{
+      if(relay1.checked){
+        sc.emit('relay1', {msg: true});
+      }
+      else{
+        sc.emit('relay1', {msg: false});
+      }
+    });
 
-        relay2.addEventListener('change', ()=>{
-          if(relay2.checked){
-            sc.emit('relay2', {msg: true});
-          }
-          else{
-            sc.emit('relay2', {msg: false});
-          }
-        });
+    relay2.addEventListener('change', ()=>{
+      if(relay2.checked){
+        sc.emit('relay2', {msg: true});
+      }
+      else{
+        sc.emit('relay2', {msg: false});
+      }
+    });
 
-        relay3.addEventListener('change', ()=>{
-          if(relay3.checked){
-            sc.emit('relay3', {msg: true});
-          }
-          else{
-            sc.emit('relay3', {msg: false});
-          }
-        });
+    relay3.addEventListener('change', ()=>{
+      if(relay3.checked){
+        sc.emit('relay3', {msg: true});
+      }
+      else{
+        sc.emit('relay3', {msg: false});
+      }
+    });
 
-        relay4.addEventListener('change', ()=>{
-          if(relay4.checked){
-            sc.emit('relay4', {msg: true});
-          }
-          else{
-            sc.emit('relay4', {msg: false});
-          }
-        });
+    relay4.addEventListener('change', ()=>{
+      if(relay4.checked){
+        sc.emit('relay4', {msg: true});
+      }
+      else{
+        sc.emit('relay4', {msg: false});
+      }
+    });
 
-        sc.on('statusgps', (data)=>{
-          if(data.msg){
-            gps.checked = true;
-          }
-          else{
-            gps.checked = false;
-          }
-        });
+    sc.on('statusgps', (data)=>{
+      if(data.msg){
+        gps.checked = true;
+      }
+      else{
+        gps.checked = false;
+      }
+    });
 
-        sc.on('relay1', (data)=>{
-          if(data.msg){
-            relay1.checked = true;
-          }
-          else{
-            relay1.checked = false;
-          }
-        });
+    sc.on('relay1', (data)=>{
+      if(data.msg){
+        relay1.checked = true;
+      }
+      else{
+        relay1.checked = false;
+      }
+    });
 
-        sc.on('relay2', (data)=>{
-          if(data.msg){
-            relay2.checked = true;
-          }
-          else{
-            relay2.checked = false;
-          }
-        });
+    sc.on('relay2', (data)=>{
+      if(data.msg){
+        relay2.checked = true;
+      }
+      else{
+        relay2.checked = false;
+      }
+    });
 
-        sc.on('relay3', (data)=>{
-          if(data.msg){
-            relay3.checked = true;
-          }
-          else{
-            relay3.checked = false;
-          }
-        });
+    sc.on('relay3', (data)=>{
+      if(data.msg){
+        relay3.checked = true;
+      }
+      else{
+        relay3.checked = false;
+      }
+    });
 
-        sc.on('relay4', (data)=>{
-          if(data.msg){
-            relay4.checked = true;
-          }
-          else{
-            relay4.checked = false;
-          }
-        });
+    sc.on('relay4', (data)=>{
+      if(data.msg){
+        relay4.checked = true;
+      }
+      else{
+        relay4.checked = false;
+      }
+    });
 
-        sc.on('ambilfoto', (data)=>{
-          console.log(data.msg);
-          pesanFoto.innerHTML = data.msg.toUpperCase()+" Taking Picture..";
-        });
+    sc.on('ambilfoto', (data)=>{
+      console.log(data.msg);
+      pesanFoto.innerHTML = data.msg.toUpperCase()+" Taking Picture..";
+    });
