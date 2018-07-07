@@ -4,10 +4,55 @@ block content
    // Main content
    section.content
     // Default box
-    .box
-     .box-body
+    .row
+      .col-md-6
+        .form-group
+        // Rounded switch
+        label Buzzer Alarm
+        br
+        label.switch
+          input#relaystatus1(type='checkbox' checked=data_relay.buzzer)
+          span.slider.round
+        br
 
-      // checkbox
+        label Vibration Sensor
+        br
+        label.switch
+          input#relaystatus2(type='checkbox' checked=data_relay.vibration)
+          span.slider.round
+        br
+
+        label Turn Off Ignition
+        br
+        label.switch
+          input#relaystatus3(type='checkbox' checked=data_relay.ignition)
+          span.slider.round
+        br
+
+        label Relay4
+        br
+        label.switch
+          input#relaystatus4(type='checkbox')
+          span.slider.round
+        br
+        br
+
+        label Start GPS
+        br
+        label.switch
+          input#statusgps(type='checkbox' checked=data_relay.gps)
+          span.slider.round
+
+        br
+        br
+
+        label Take Picture
+        br
+        input#takePicture.btn.btn-success(type="button", value="Take a picture")
+        br
+        label#fotoMessage
+
+            // checkbox
       style.
        /* The switch - the box around the slider */
         .switch {
@@ -67,53 +112,6 @@ block content
         .slider.round:before {
           border-radius: 50%;
         }
-
-      .form-group
-       // Rounded switch
-       label Buzzer Alarm
-       br
-       label.switch
-        input#relaystatus1(type='checkbox' checked=data_relay.buzzer)
-        span.slider.round
-       br
-
-       label Vibration Sensor
-       br
-       label.switch
-        input#relaystatus2(type='checkbox' checked=data_relay.vibration)
-        span.slider.round
-       br
-
-       label Turn Off Ignition
-       br
-       label.switch
-        input#relaystatus3(type='checkbox' checked=data_relay.ignition)
-        span.slider.round
-       br
-
-       label Relay4
-       br
-       label.switch
-        input#relaystatus4(type='checkbox')
-        span.slider.round
-       br
-       br
-
-       label Start GPS
-       br
-       label.switch
-        input#statusgps(type='checkbox' checked=data_relay.gps)
-        span.slider.round
-
-       br
-       br
-
-       label Take Picture
-       br
-       input#takePicture.btn.btn-success(type="button", value="Take a picture")
-       br
-       label#fotoMessage
-
      // /.box-footer
     // /.box
    // /.content
