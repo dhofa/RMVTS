@@ -67,16 +67,17 @@ block content
           border-radius: 50%;
         }
 
-        .modal-dialog,
+        .modal-dialog {
+          max-height: 100%;
+        },
         .modal-content {
-            /* 80% of window height */
-            height: 80%;
+          /* 80% of window height */
+          height: 100%;
         }
-
         .modal-body {
-            /* 100% = dialog height, 120px = header + footer */
-            max-height: calc(100% - 120px);
-            overflow-y: scroll;
+          /* 100% = dialog height, 120px = header + footer 
+          max-height: calc(100% - 120px);
+          overflow-y: scroll;*/
         }
 
       .col-md-3
