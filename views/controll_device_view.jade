@@ -115,11 +115,23 @@ block content
        label#fotoMessage
       .col-md-9
        img#gambar_kendaraan(src='https://rmvts.jagopesan.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px")
+   
+   #modal-success.modal.modal-success.fade
+    .modal-dialog
+     .modal-content
+      .modal-header
+       button.close(type='button', data-dismiss='modal', aria-label='Close')
+        span(aria-hidden='true') ×
+       h4.modal-title Snap Capture
+      .modal-body
+       img.img-responsive.img-thumbnail#the_image
+      .modal-footer
+       button.btn.btn-outline(type='button', data-dismiss='modal') Close
      // /.box-footer
     // /.box
    // /.content
 
-
+   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
    script(src='https://rmvts.jagopesan.com/socket.io/socket.io.js')
    //script(src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js")
    //script(src='http://localhost:3000/socket.io/socket.io.js')
@@ -136,7 +148,15 @@ block content
     var btnAmbilFoto = document.getElementById('takePicture');
     var pesanFoto = document.getElementById('fotoMessage');
     var link_image= !{JSON.stringify(last_driver_photos)};
+    var btn_popup = document.getElementById("gambar_kendaraan");
     document.getElementById("gambar_kendaraan").src = link_image;
+
+    $(function(){
+     $('#gambar_kendaraan').click(function(){
+      $('#the_image').attr('src', link_image);
+      $('#modal-success').modal('show');
+     })
+    });
 
     btnAmbilFoto.addEventListener('click', ()=>{
       this.sc.emit('ambilfoto', {msg: current_time});
