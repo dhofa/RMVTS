@@ -30,7 +30,7 @@ html(lang='en')
             // menu profile quick info
             .profile.clearfix
               .profile_pic
-                img.img-circle.profile_img(src='https://rmvts.jagopesan.com/images/img.jpg', alt='...')
+                img#foto_left.img-circle.profile_img(src='https://rmvts.jagopesan.com/images/img.jpg', alt='...')
               .profile_info
                 span Welcome,
                 h2#nama_user
@@ -97,7 +97,7 @@ html(lang='en')
                 li
                   a.user-profile.dropdown-toggle(href='javascript:;', data-toggle='dropdown', aria-expanded='false')
                     span
-                      img(src='https://rmvts.jagopesan.com/images/img.jpg', alt='') 
+                      img#foto_right(src='https://rmvts.jagopesan.com/images/img.jpg', alt='') 
                       span#email_user
 
                     span.fa.fa-angle-down
@@ -157,6 +157,8 @@ html(lang='en')
         // Retrieve
         document.getElementById("nama_user").innerHTML = localStorage.getItem("username");
         document.getElementById("email_user").innerHTML = localStorage.getItem("email");
+        document.getElementById("foto_left").src = localStorage.getItem("foto_user");
+        document.getElementById("foto_right").src = localStorage.getItem("foto_user");        
       } else {
         document.getElementById("nama_user").innerHTML = "Sorry, your browser does not support Web Storage...";
       }

@@ -15,7 +15,8 @@ router.get('/',checkAuth, function(req, res, next) {
       last_state_ignition : data.vehicle_data.last_state_ignition,
       last_state_vibration: data.vehicle_data.last_state_vibration,
       last_location: data.vehicle_data.last_location,
-      last_image_capture: data.vehicle_data.last_image_capture
+      last_image_capture: data.vehicle_data.last_image_capture,
+      foto_profile : data.vehicle_data.user_photos
      });
    });
 });

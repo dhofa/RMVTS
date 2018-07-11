@@ -53,8 +53,11 @@ block content
         if (typeof(Storage) !== "undefined") {
           var username = !{JSON.stringify(username)};
           var email    = !{JSON.stringify(email)};
+          var foto_user= !{JSON.stringify(foto_profile)};          
+          
           localStorage.setItem("username",username);
           localStorage.setItem("email",email);
+          localStorage.setItem("foto_user",foto_user);
         }
 
         //handle click action
