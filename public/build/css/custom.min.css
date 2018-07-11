@@ -340,7 +340,7 @@ table.tile_info td p {
     margin-left: 15%;
     z-index: 1000;
     position: inherit;
-    margin-top: 20px;
+    margin-top: 0px;
     border: 1px solid rgba(52, 73, 94, .44);
     padding: 4px
 }
@@ -1363,7 +1363,7 @@ legend {
 
 .profile_details .profile_view .img-circle {
     border: 1px solid #E6E9ED;
-    padding: 2px
+    padding: 1px
 }
 
 .profile_details .profile_view h2 {
