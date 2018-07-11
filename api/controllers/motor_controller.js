@@ -447,9 +447,9 @@ exports.sendNotificationAPI = (req, res)=>{
 };
 
 function sendNotif(fcm_token, title, message){
- console.log(fcm_token);
- console.log(title);
- console.log(message);
+//  console.log(fcm_token);
+//  console.log(title);
+//  console.log(message);
 
  request({
   url: 'https://fcm.googleapis.com/fcm/send',
@@ -466,12 +466,21 @@ function sendNotif(fcm_token, title, message){
     "to": fcm_token
     })
    },function(error, response, body) {
-      if (error)
-       console.log(error);
-      else if (response.statusCode >= 400)
-       console.log("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);
-      else
-       console.log(body);
+      if (error){
+        return res.status(500).json({
+          status   : "fail",
+          message  : "Failed to send notification.."
+        });
+      }
+      else if (response.statusCode >= 400){
+        console.log("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);
+      }
+      else{
+        return res.status(200).json({
+          status   : "success",
+          message  : "success to send notification..",
+        });
+      }
   });
 }
 
