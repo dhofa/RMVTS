@@ -467,15 +467,15 @@ function sendNotif(fcm_token, title, message){
     })
    },function(error, response, body) {
       if (error){
-        request.end(error);
+        response.end(error);
       }
       else if (response.statusCode >= 400){
         console.log("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);
-        request.end("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);      
+        response.end("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);      
       }
       else{
         console.log(body);
-        request.end(body);
+        response.end(body);
       }
   });
 }
