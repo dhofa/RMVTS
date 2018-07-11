@@ -17,6 +17,7 @@ const logIgnitionRouter= require('./routes/log_ignition_router');
 const controllDeviceRouter = require('./routes/controll_device_router');
 const gmapsRouter = require('./routes/gmaps_router');
 const realtimeGmapsRouter = require('./routes/realtime_gmaps_router');
+const profileRouter = require('./routes/profile_router');
 const loginRouter = require('./routes/login_router');
 const checkAuth = require('./middleware/check_auth');
 
@@ -64,6 +65,7 @@ app.use('/log_ignition', logIgnitionRouter);
 app.use('/controll_device', controllDeviceRouter);
 app.use('/gmaps', gmapsRouter);
 app.use('/realtime_gmaps', realtimeGmapsRouter);
+app.use('/profile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

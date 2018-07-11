@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .row
+    .col-md-6
+      img#foto_profile(src='https://rmvts.jagopesan.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px")
+    .col-md-6(style='height:380px;')
+      
+      script.
+        // Save data email and username in localstorage
+        if (typeof(Storage) !== "undefined") {
+          var owner    = !{JSON.stringify(owner)};
+          var email    = !{JSON.stringify(email)};
+          var address  = !{JSON.stringify(address)};  
+          var foto_user= !{JSON.stringify(foto_profile)};          
+          var plate_number  = !{JSON.stringify(plate_number)};  
+          var vehicle_type  = !{JSON.stringify(vehicle_type)};  
+
+
+          localStorage.setItem("username",username);
+          localStorage.setItem("email",email);
+          localStorage.setItem("foto_user",foto_user);
+
+          document.getElementById("foto_profile").src = foto_user;
+        }
