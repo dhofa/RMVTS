@@ -342,6 +342,11 @@ table.tile_info td p {
     background: #fff;  
     object-fit: cover;
     padding: 2px;
+    z-index: 1000;
+    position: inherit;
+    margin-left: 15%;
+    margin-top: 20px;
+
   }
 
 .img-circle.profile_img {
