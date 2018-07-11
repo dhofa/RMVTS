@@ -336,13 +336,14 @@ table.tile_info td p {
 
 .img-circle.profile_img {
     width: 70%;
+    height: 70%;
     background: #fff;
     margin-left: 15%;
     z-index: 1000;
     position: inherit;
-    margin-top: 0px;
+    margin-top: 20px;
     border: 1px solid rgba(52, 73, 94, .44);
-    padding: 4px
+    padding: 2px
 }
 
 .profile_info {
@@ -374,7 +375,7 @@ table.tile_info td p {
 
 .profile.img_2 .profile_pic .img-circle.profile_img {
     width: 50%;
-    margin: 5px 0 0
+    margin: 10px 0 0
 }
 
 .profile.img_2 .profile_info {
@@ -1363,7 +1364,7 @@ legend {
 
 .profile_details .profile_view .img-circle {
     border: 1px solid #E6E9ED;
-    padding: 1px
+    padding: 2px
 }
 
 .profile_details .profile_view h2 {
