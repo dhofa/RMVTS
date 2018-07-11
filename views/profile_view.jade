@@ -1,11 +1,33 @@
 extends layout
 
 block content
-  .row(style="padding-top: 100px")
+  .row(style="padding: 100px")
     .col-md-6
       img#foto_profile(src='https://rmvts.jagopesan.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px")
     .col-md-6(style='height:380px;')
-      
+      table
+        tbody
+            tr
+            td Owner
+            |                         
+            td :
+            |                         
+            td Ahmad Mundhofa
+            |                       
+            tr
+            td Email
+            |                         
+            td :
+            |                         
+            td ahmadmundhofa@gmail.com
+            |                       
+            tr
+            td Address
+            |                         
+            td :
+            |                         
+            td jalan A No B
+
       script.
         // Save data email and username in localstorage
         if (typeof(Storage) !== "undefined") {
