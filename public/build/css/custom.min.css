@@ -334,9 +334,17 @@ table.tile_info td p {
     float: left
 }
 
+.profile_fit {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+    object-fit: cover;
+  }
+
 .img-circle.profile_img {
-    width: 70%;
-    height: 70%;
+    width: auto;
     background: #fff;
     margin-left: 15%;
     z-index: 1000;
@@ -374,6 +382,11 @@ table.tile_info td p {
 }
 
 .profile.img_2 .profile_pic .img-circle.profile_img {
+    width: 50%;
+    margin: 10px 0 0
+}
+
+.profile.img_2 .profile_pic .profile_fit {
     width: 50%;
     margin: 10px 0 0
 }
