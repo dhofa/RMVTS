@@ -15,7 +15,8 @@ router.get('/',checkAuth, function(req, res, next) {
       plate_number : data.vehicle_data.plate_number,
       address : data.vehicle_data.address,
       vehicle_type : data.vehicle_data.vehicle_type,
-      foto_profile : data.vehicle_data.user_photos
+      foto_profile : data.vehicle_data.user_photos,
+      device_id : data._id
      });
    });
 });

@@ -2,10 +2,10 @@ extends layout
 
 block content
   .row
-    .col-md-6(style='padding:10px')
+    .col-md-6(style='padding:20px')
       label.btn.btn-primary
         img#foto_profile.img-thumbnail(src='https://rmvts.jagopesan.com/images/motor.jpg', style="border-radius: 0px; width:500px; height:380px;")
-    .col-md-6(style='height:380px; padding:20px')
+    .col-md-6(style='padding:20px')
       .panel.panel-primary
         .panel-heading
             h3.panel-title User Profile
@@ -46,6 +46,21 @@ block content
                     |                         
                     td#vahicle_type_row
 
+      .panel.panel-primary
+        .panel-heading
+            h3.panel-title Device Information
+        |         
+        .panel-body
+            table
+                tbody
+                    tr
+                    td Device ID
+                    |                         
+                    td(style="margin-left:10px; margin-right:10px;") :
+                    |                         
+                    td#device_id_row
+                    |                                          
+
       script.
         // Save data email and username in localstorage
         if (typeof(Storage) !== "undefined") {
@@ -55,6 +70,7 @@ block content
           var foto_user= !{JSON.stringify(foto_profile)};          
           var plate_number  = !{JSON.stringify(plate_number)};  
           var vehicle_type  = !{JSON.stringify(vehicle_type)};  
+          var device_id     = !{JSON.stringify(device_id)};
 
           document.getElementById("foto_profile").src    = foto_user;
           document.getElementById("owner_row").innerHTML = owner;
@@ -62,4 +78,6 @@ block content
           document.getElementById("address_row").innerHTML = address;
           document.getElementById("plate_number_row").innerHTML = plate_number;
           document.getElementById("vahicle_type_row").innerHTML = vehicle_type;
+          document.getElementById("device_id_row").innerHTML = vehicle_type;
+
         }
