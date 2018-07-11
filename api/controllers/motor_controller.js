@@ -467,19 +467,15 @@ function sendNotif(fcm_token, title, message){
     })
    },function(error, response, body) {
       if (error){
-        return res.status(500).json({
-          status   : "fail",
-          message  : "Failed to send notification.."
-        });
+        request.end(error);
       }
       else if (response.statusCode >= 400){
         console.log("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);
+        request.end("HTTP Error" + response.statusCode + "-" +response.statusCode + "\n" + body);      
       }
       else{
-        return res.status(200).json({
-          status   : "success",
-          message  : "success to send notification..",
-        });
+        console.log(body);
+        request.end(body);
       }
   });
 }
