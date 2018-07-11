@@ -336,15 +336,16 @@ table.tile_info td p {
 
 .profile_fit {
     display: inline-block;
-    width: 150px;
-    height: 150px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-  
+    background: #fff;  
     object-fit: cover;
+    padding: 2px;
   }
 
 .img-circle.profile_img {
-    width: auto;
+    width: 70%;
     background: #fff;
     margin-left: 15%;
     z-index: 1000;
