@@ -441,17 +441,13 @@ exports.sendNotificationAPI = (req, res)=>{
    });
   }else{
    var fcm_token = data.user.fcm_token;
-   sendNotif(fcm_token, title, message);
-   res.end();
+   var notification_response = sendNotif(fcm_token, title, message);
+   res.end(notification_response);
   }
  });
 };
 
 function sendNotif(fcm_token, title, message){
-//  console.log(fcm_token);
-//  console.log(title);
-//  console.log(message);
-
  request({
   url: 'https://fcm.googleapis.com/fcm/send',
   method: 'POST',
