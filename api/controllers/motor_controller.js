@@ -442,7 +442,7 @@ exports.sendNotificationAPI = (req, res)=>{
   }else{
    var fcm_token = data.user.fcm_token;
    var notification_response = sendNotif(fcm_token, title, message);
-   res.end(notification_response);
+   res.send(notification_response);
   }
  });
 };
