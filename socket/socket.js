@@ -54,11 +54,11 @@ module.exports = function(io){
   io.emit('refresh_foto', {msg: data.msg});
  });
 
-  //Settup socket untuk realtime maps
-  socket.on('activate_realtime_maps', (data)=>{
-    console.log('activate_realtime_maps', data.msg);
-    io.emit('activate_realtime_maps', {msg: data.msg});
-   });
+//Settup socket untuk realtime maps
+socket.on('activate_realtime_maps', (data)=>{
+  console.log('activate_realtime_maps', data.msg);
+  io.emit('activate_realtime_maps', {msg: data.msg});
+});
 
  //Settup statusbuzzer
  socket.on('statusbuzzer', (data)=>{
