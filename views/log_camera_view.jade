@@ -21,15 +21,14 @@ block content
      th Images File
     each dd, i in data_images
      - var link_gambar  = dd.link_images  
-     - var title        = dd.images     
+     - var title_image  = dd.images     
      .col-md-4
-        .thumbnail
-            a(link_image="#{dd.link_images}", href="javascript:;")
-            img(src=link_gambar,style="width:100%")
-            |           
-            .caption
-                p 
-                | title
+      .thumbnail
+       a(link_image="#{dd.link_images}", href="javascript:;")
+        img(src=link_gambar,style="width:100%")
+        |           
+        .caption
+         p title_image
 
     //-  tr
     //-   td #{i+1}
