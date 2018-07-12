@@ -13,23 +13,17 @@ block content
   // Default box
   .box
    .box-body.no-padding
-   table.table.table-striped
-    tr
-     th No
-     th images
-     th Created At
-     th Images File
+   
     each dd, i in data_images
      - var link_gambar  = dd.link_images  
      - var title_image  = dd.images     
-     .row
-      .col-md-4
-       .thumbnail
-        a.klik_image(link_image="#{dd.link_images}", href="javascript:;")
-         img(src=link_gambar,style="width:100%; height:100%;")
-         |           
-         .caption
-          p Lorem ipsum donec id elit non mi porta gravida at eget metus.
+     .col-md-6
+      .thumbnail
+       a.klik_image(link_image="#{dd.link_images}", href="javascript:;")
+        img(src=link_gambar,style="width:100%; height:100%;")
+        |           
+        .caption
+         p Lorem ipsum donec id elit non mi porta gravida at eget metus.
 
     //-  tr
     //-   td #{i+1}
