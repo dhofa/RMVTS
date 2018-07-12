@@ -20,8 +20,17 @@ block content
      th Created At
      th Images File
     each dd, i in data_images
-     - var link_gambar  = dd.link_images
-     img.klik_image.col-md-4(src=link_gambar, style="border-radius: 10px; width:100px; height:100px")
+     - var link_gambar  = dd.link_images  
+     - var title        = dd.images     
+     .col-md-4
+        .thumbnail
+            a(link_image="#{dd.link_images}", href="javascript:;")
+            img(src=link_gambar,style="width:100%")
+            |           
+            .caption
+                p 
+                | title
+
     //-  tr
     //-   td #{i+1}
     //-   td #{dd.images}
