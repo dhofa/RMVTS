@@ -68,8 +68,8 @@ router.get('/:tanggal_periode', checkAuth,function(req, res) {
    res.render('log_camera_view',{
     data_images: data
   });
-  });
-
+ });
+ 
 });
 
 module.exports = router;
