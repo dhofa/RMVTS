@@ -26,7 +26,9 @@ block content
       td
        span.badge.bg-green #{dd.created}
       td
-       a.klik_image.btn.btn-success(link_image="#{dd.link_images}", href="javascript:;") See Images
+       - var link_gambar  = link_image
+       img.klik_image.col-md-4(src=link_gambar, style="border-radius: 10px;")
+       //a.klik_image.btn.btn-success(link_image="#{dd.link_images}", href="javascript:;") See Images
    // /.box-body
    .box-footer
     | Find The Driver
