@@ -25,10 +25,11 @@ const motorSchema = mongoose.Schema({
   }
  },
  relay:{
- 	gps          : Boolean,
- 	ignition     : Boolean,
- 	vibration    : Boolean,
- 	buzzer       : Boolean
+ 	gps          : {type: Boolean,default:false},
+ 	ignition     : {type: Boolean,default:false},
+ 	vibration    : {type: Boolean,default:false},
+  buzzer       : {type: Boolean,default:false},
+  realtime_gps : {type: Boolean,default:false}
  },
  android_device : {
   last_latitude  : {type: Number, default: 0},

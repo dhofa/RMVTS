@@ -85,7 +85,8 @@ router.post('/signup', (req, res, next) => {
           gps          : false,
           ignition     : false,
           vibration    : false,
-          buzzer       : false
+          buzzer       : false,
+          realtime_gps : false
          }
        });
 

@@ -9,7 +9,13 @@ block content
       #googleMaps.col-md-12(style='height:525px')
      // /.box-body
      .box-footer
-      | Check your location.
+       br
+       label Start Realtime Maps
+       br
+       label.switch
+        input#start_maps(type='checkbox' checked=data_relay.realtime_gps)
+        span.slider.round
+       br
      // /.box-footer
     // /.box
    // /.content
@@ -21,6 +27,27 @@ block content
     var sc = io.connect('https://rmvts.jagopesan.com/');    
     //var sc = io.connect('https://rmvts.herokuapp.com/');
     //var sc = io.connect('http://localhost:3000/');
+    var btnStartRealtimeMaps = document.getElementById('start_maps');
+    
+    btnStartRealtimeMaps.addEventListener('change', ()=>{
+     if(gps.checked){
+      this.sc.emit('activate_realtime_maps', {msg: true});
+     }
+     else{
+      this.sc.emit('activate_realtime_maps', {msg: false});
+     }
+    });
+
+    sc.on('activate_realtime_maps', (data)=>{
+     if(data.msg){
+      btnStartRealtimeMaps.checked = true;
+     }
+     else{
+      btnStartRealtimeMaps.checked = false;
+     }
+    });
+
+
     function initMap(){
      var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
      var mapnya = document.getElementById('googleMaps');
