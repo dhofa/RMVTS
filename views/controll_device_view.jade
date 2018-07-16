@@ -125,6 +125,7 @@ block content
         input#relaystatus4(type='checkbox' checked=false)
         span.slider.round
        br
+       label#info_started_up
 
        label Take Picture
        br
@@ -168,6 +169,7 @@ block content
     var pesanFoto = document.getElementById('fotoMessage');
     var link_image= !{JSON.stringify(last_driver_photos)};
     var btn_popup = document.getElementById("gambar_kendaraan");
+    var info_started_up = document.getElemenrById("info_started_up");
     document.getElementById("gambar_kendaraan").src = link_image;
 
     $(function(){
@@ -230,16 +232,19 @@ block content
      }
     });
 
-    if(relay3.checked){
-      relay4.addEventListener('change', ()=>{
-      if(relay4.checked){
-        sc.emit('relay4_web', {msg: true});
+    relay4.addEventListener('change', ()=>{
+      if(relay3.checked){
+        if(relay4.checked){
+          sc.emit('relay4_web', {msg: true});
+        }
+        else{
+          sc.emit('relay4_web', {msg: false});
+        }
+      }else{
+        info_started_up.innerHTML = data.msg.toUpperCase()+" To starting up, you should activate vehicle first..";
       }
-      else{
-        sc.emit('relay4_web', {msg: false});
-      }
-      });
-    }
+    });
+    
 
     sc.on('vibration', (data)=>{
      if(data.msg){
