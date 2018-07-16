@@ -93,7 +93,7 @@ block content
        label Vibration Sensor
        br
        label.switch
-        input#relaystatus2(type='checkbox' checked=data_relay.vibration)
+        input#vibration_checkbox(type='checkbox' checked=data_relay.vibration)
         span.slider.round
        br
 
@@ -154,9 +154,9 @@ block content
     var sc = io.connect('https://rmvts.jagopesan.com/');
     //var sc = io.connect('http://localhost:3000/');
     var relay1 = document.getElementById('relaystatus1');
-    var relay2 = document.getElementById('relaystatus2');
     var relay3 = document.getElementById('relaystatus3');
     var relay4 = document.getElementById('relaystatus4');
+    var vibration_checkbox = document.getElementById('vibration_checkbox');
     var gps = document.getElementById('statusgps');
     var btnAmbilFoto = document.getElementById('takePicture');
     var pesanFoto = document.getElementById('fotoMessage');
@@ -178,10 +178,10 @@ block content
 
     gps.addEventListener('change', ()=>{
      if(gps.checked){
-      sc.emit('statusgps', {msg: true});
+      sc.emit('activate_realtime_gps', {msg: true});
      }
      else{
-      sc.emit('statusgps', {msg: false});
+      sc.emit('activate_realtime_gps', {msg: false});
      }
     });
 
@@ -194,12 +194,12 @@ block content
      }
     });
 
-    relay2.addEventListener('change', ()=>{
-     if(relay2.checked){
-      sc.emit('relay2', {msg: true});
+    vibration_checkbox.addEventListener('change', ()=>{
+     if(vibration_checkbox.checked){
+      sc.emit('vibration', {msg: true});
      }
      else{
-      sc.emit('relay2', {msg: false});
+      sc.emit('vibration', {msg: false});
      }
     });
 
@@ -221,7 +221,7 @@ block content
      }
     });
 
-    sc.on('statusgps', (data)=>{
+    sc.on('activate_realtime_gps', (data)=>{
      if(data.msg){
       gps.checked = true;
      }
@@ -239,12 +239,12 @@ block content
      }
     });
 
-    sc.on('relay2', (data)=>{
+    sc.on('vibration', (data)=>{
      if(data.msg){
-      relay2.checked = true;
+      vibration_checkbox.checked = true;
      }
      else{
-      relay2.checked = false;
+      vibration_checkbox.checked = false;
      }
     });
 

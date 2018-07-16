@@ -12,12 +12,6 @@ module.exports = function(io){
    io.emit('send_data_to_client', {latitude: data.latitude, longitude: data.longitude});
   });
 
-  //Settup socket untuk GPS
-  socket.on('statusgps', (data)=>{
-   console.log('gps: ', data.msg);
-   io.emit('statusgps', {msg: data.msg});
-  });
-
   //Settup socket untuk RELAY
   socket.on('relay1', (data)=>{
    console.log('relay 1 : ', data.msg);
@@ -55,15 +49,21 @@ module.exports = function(io){
  });
 
 //Settup socket untuk realtime maps
-socket.on('activate_realtime_maps', (data)=>{
-  console.log('activate_realtime_maps', data.msg);
-  io.emit('activate_realtime_maps', {msg: data.msg});
+socket.on('activate_realtime_gps', (data)=>{
+  console.log('activate_realtime_gps', data.msg);
+  io.emit('activate_realtime_gps', {msg: data.msg});
 });
 
  //Settup statusbuzzer
  socket.on('statusbuzzer', (data)=>{
   console.log('statusbuzzer : ', data.msg);
   io.emit('statusbuzzer', {msg: data.msg});
+ });
+
+ //Settup vibration
+ socket.on('vibration', (data)=>{
+  console.log('vibration : ', data.msg);
+  io.emit('vibration', {msg: data.msg});
  });
 
  socket.on('disconnect', function(){
