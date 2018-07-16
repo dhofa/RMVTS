@@ -12,28 +12,40 @@ module.exports = function(io){
    io.emit('send_data_to_client', {latitude: data.latitude, longitude: data.longitude});
   });
 
-  //Settup socket untuk RELAY
+  //Settup socket untuk buzzer
   socket.on('relay1', (data)=>{
    console.log('relay 1 : ', data.msg);
    io.emit('relay1', {msg: data.msg});
   });
 
-  //Settup socket untuk RELAY
+  //Settup socket untuk force turn off
   socket.on('relay2', (data)=>{
    console.log('relay 2 : ', data.msg);
    io.emit('relay2', {msg: data.msg});
   });
 
-  //Settup socket untuk RELAY
+  //Settup socket untuk turn on ignition paralel
   socket.on('relay3', (data)=>{
    console.log('relay 3 : ', data.msg);
    io.emit('relay3', {msg: data.msg});
   });
 
-  //Settup socket untuk RELAY
+  //Settup socket untuk starting up
   socket.on('relay4', (data)=>{
    console.log('relay 4 : ', data.msg);
    io.emit('relay4', {msg: data.msg});
+  });
+
+  //Settup socket untuk starting up web
+  socket.on('relay4_web', (data)=>{
+   console.log('relay 4 : ', data.msg);
+   io.emit('relay4_web', {msg: data.msg});
+  });
+
+  //Settup socket untuk starting up web reply
+  socket.on('relay4_web_reply', (data)=>{
+   console.log('relay 4 : ', data.msg);
+   io.emit('relay4_web_reply', {msg: data.msg});
   });
 
  //Settup socket untuk takeFoto

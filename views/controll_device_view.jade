@@ -232,10 +232,10 @@ block content
 
     relay4.addEventListener('change', ()=>{
      if(relay4.checked){
-      sc.emit('relay4', {msg: true});
+      sc.emit('relay4_web', {msg: true});
      }
      else{
-      sc.emit('relay4', {msg: false});
+      sc.emit('relay4_web', {msg: false});
      }
     });
 
@@ -287,11 +287,17 @@ block content
      }
     });
 
-    sc.on('relay4', (data)=>{
+    sc.on('relay4_web', (data)=>{
      if(data.msg){
       relay4.checked = true;
      }
      else{
+      relay4.checked = false;
+     }
+    });
+
+    sc.on('relay4_web_reply', (data)=>{
+     if(data.msg){
       relay4.checked = false;
      }
     });
