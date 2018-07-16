@@ -234,14 +234,16 @@ block content
 
     relay4.addEventListener('change', ()=>{
       if(relay3.checked){
-        if(relay4.checked){
-          sc.emit('relay4_web', {msg: true});
-        }
-        else{
-          sc.emit('relay4_web', {msg: false});
-        }
+
       }else{
         info_started_up.innerHTML = data.msg.toUpperCase()+" To starting up, you should activate vehicle first..";
+      }
+
+      if(relay4.checked){
+        sc.emit('relay4_web', {msg: true});
+      }
+      else{
+        sc.emit('relay4_web', {msg: false});
       }
     });
     
