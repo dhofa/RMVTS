@@ -91,14 +91,14 @@ block content
     
     btnStartRealtimeMaps.addEventListener('change', ()=>{
      if(gps.checked){
-      this.sc.emit('activate_realtime_maps', {msg: true});
+      this.sc.emit('activate_realtime_gps', {msg: true});
      }
      else{
-      this.sc.emit('activate_realtime_maps', {msg: false});
+      this.sc.emit('activate_realtime_gps', {msg: false});
      }
     });
 
-    sc.on('activate_realtime_maps', (data)=>{
+    sc.on('activate_realtime_gps', (data)=>{
      if(data.msg){
       btnStartRealtimeMaps.checked = true;
      }
