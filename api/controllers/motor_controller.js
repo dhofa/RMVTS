@@ -895,8 +895,61 @@ exports.getLogBuzzerByDate = (req, res)=>{
 }
 
 exports.updateRelayGps = (req, res)=>{
-	var updateState = {"relay.gps": req.body.state};
-	// MotorSchema.findByIdAndUpdate(req.userData.userId, updateState, function(err, data) {
+	var updateState = {"relay.realtime_gps": req.body.state};
+ MotorSchema.findByIdAndUpdate(req.params.id_user, updateState, function(err, data) {
+  if(err){
+   return res.status(500).json({
+     status   : "fail",
+     message  : "ID User Not Found.."
+   });
+  }
+  MotorSchema.findById(req.params.id_user, (err, result)=>{
+   if(err){
+    return res.status(500).json({
+      status   : "fail",
+      message  : "Gagal mendapatkan data.."
+    });
+   }
+   return res.status(200).json({
+     status   : "success",
+     message  : "Berhasil mendapatkan data..",
+     data     : {
+      relay   : result.relay
+     }
+   });
+  });
+	});
+};
+
+exports.updateRelayIgnitionOn = (req, res)=>{
+	var updateState = {"relay.ignition_on": req.body.state};
+ MotorSchema.findByIdAndUpdate(req.params.id_user, updateState, function(err, data) {
+  if(err){
+   return res.status(500).json({
+     status   : "fail",
+     message  : "ID User Not Found.."
+   });
+  }
+  MotorSchema.findById(req.params.id_user, (err, result)=>{
+   if(err){
+    return res.status(500).json({
+      status   : "fail",
+      message  : "Gagal mendapatkan data.."
+    });
+   }
+   return res.status(200).json({
+     status   : "success",
+     message  : "Berhasil mendapatkan data..",
+     data     : {
+      relay   : result.relay
+     }
+   });
+  });
+	});
+};
+
+exports.updateRelayIgnitionOff = (req, res)=>{
+	var updateState = {"relay.ignition_off": req.body.state};
  MotorSchema.findByIdAndUpdate(req.params.id_user, updateState, function(err, data) {
   if(err){
    return res.status(500).json({
@@ -923,38 +976,9 @@ exports.updateRelayGps = (req, res)=>{
 	});
 };
 
-exports.updateRelayIgnition = (req, res)=>{
-	var updateState = {"relay.ignition": req.body.state};
-	// MotorSchema.findByIdAndUpdate(req.userData.userId, updateState, function(err, data) {
- MotorSchema.findByIdAndUpdate(req.params.id_user, updateState, function(err, data) {
-  if(err){
-   return res.status(500).json({
-     status   : "fail",
-     message  : "ID User Not Found.."
-   });
-  }
-  // MotorSchema.findById(req.userData.userId, (err, result)=>{
-  MotorSchema.findById(req.params.id_user, (err, result)=>{
-   if(err){
-    return res.status(500).json({
-      status   : "fail",
-      message  : "Gagal mendapatkan data.."
-    });
-   }
-   return res.status(200).json({
-     status   : "success",
-     message  : "Berhasil mendapatkan data..",
-     data     : {
-      relay   : result.relay
-     }
-   });
-  });
-	});
-};
 
 exports.updateRelayVibration = (req, res)=>{
 	var updateState = {"relay.vibration": req.body.state};
-	// MotorSchema.findByIdAndUpdate(req.userData.userId, updateState, function(err, data) {
  MotorSchema.findByIdAndUpdate(req.params.id_user, updateState, function(err, data) {
   if(err){
    return res.status(500).json({

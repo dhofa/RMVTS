@@ -25,8 +25,8 @@ const motorSchema = mongoose.Schema({
   }
  },
  relay:{
- 	gps          : {type: Boolean,default:false},
- 	ignition     : {type: Boolean,default:false},
+ 	ignition_off : {type: Boolean,default:false},
+ 	ignition_on  : {type: Boolean,default:false},
  	vibration    : {type: Boolean,default:false},
   buzzer       : {type: Boolean,default:false},
   realtime_gps : {type: Boolean,default:false}

@@ -35,11 +35,12 @@ router.get('/log-ignition-periode', checkAuth, motorController.getLogIgnitionByD
 router.post('/log-buzzer/create/:id_user', motorController.createLogsBuzzer);
 router.get('/get-buzzer', checkAuth, motorController.getBuzzer);
 router.get('/log-buzzer-periode', checkAuth, motorController.getLogBuzzerByDate);
-
+ 
 //relay
 router.get('/get-relay-state/:id_user', motorController.getRelayState);
 router.post('/update-relay/gps/:id_user', motorController.updateRelayGps);
-router.post('/update-relay/ignition/:id_user', motorController.updateRelayIgnition);
+router.post('/update-relay/ignition_on/:id_user', motorController.updateRelayIgnitionOn);
+router.post('/update-relay/ignition_off/:id_user', motorController.updateRelayIgnitionOff);
 router.post('/update-relay/vibration/:id_user', motorController.updateRelayVibration);
 router.post('/update-relay/buzzer/:id_user', motorController.updateRelayBuzzer);
 
