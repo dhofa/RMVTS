@@ -38,22 +38,9 @@ block content
        }
 
    script.
-    //set default date today
-    //if(document.getElementById("periode").value.equals("mm/dd/yyyy")){
-      var tanggal = !{JSON.stringify(tanggal)};
-      document.getElementById("periode").valueAsDate = new Date(tanggal);
-    //}
+    var tanggal = !{JSON.stringify(tanggal)};
+    document.getElementById("periode").valueAsDate = new Date(tanggal);
 
-    var btnSearch = document.getElementById("cariGPS");
-    btnSearch.addEventListener('click', ()=>{
-      var periode_value = document.getElementById("periode").value;
-      var url = "https://rmvts.jagopesan.com/gmaps/all/"+periode_value;      
-      //var url = "https://rmvts.herokuapp.com/gmaps/all/"+periode_value;
-      //var url = "http://localhost:3000/gmaps/all/"+periode_value;
-      window.location.href = url;
-    });
-
-   script.
     function initMap(){
      var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
      var mymap = document.getElementById('googleMaps');

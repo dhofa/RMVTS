@@ -38,19 +38,7 @@ block content
        }
 
    script.
-    //set default date today
-    //if(document.getElementById("periode").value.equals("mm/dd/yyyy")){
-      document.getElementById("periode").valueAsDate = new Date();
-    //}
-
-    //var btnSearch = document.getElementById("cariGPS");
-    //btnSearch.addEventListener('click', ()=>{
-    //  var periode_value = document.getElementById("periode").value;
-    //  var url = "http://localhost:3000/gmaps/all/"+periode_value;
-    //  window.location.href = url;
-    //});
-
-   script.
+    document.getElementById("periode").valueAsDate = new Date();
     function initMap(){
      var options = {zoom: 12, center:{lat:-7.250445, lng:112.768845}};
      var mymap = document.getElementById('googleMaps');
