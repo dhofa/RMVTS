@@ -62,8 +62,6 @@ block content
      var data_rute = [];
 
      var iconBase = 'https://rmvts.jagopesan.com/images/';
-     //var iconBase = 'https://rmvts.herokuapp.com/images/';     
-     //var iconBase = 'http://localhost:3000/images/';
 
      for(i=0; i<locations.length; i++){
       marker = new google.maps.Marker({
@@ -80,7 +78,7 @@ block content
        }
       })(marker, i));
 
-      if(locations[1].latitude != 0 && locations[i].longitude != 0){
+      if(locations[i].latitude != 0 && locations[i].longitude != 0){
        data_rute.push({
         "lat":locations[i].latitude,
         "lng":locations[i].longitude
