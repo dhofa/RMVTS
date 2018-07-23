@@ -57,6 +57,9 @@ router.post('/date', checkAuth, function(req, res){
    }
   },
   {
+    $replaceRoot:{newRoot: "$koordinat"} //ini untuk mengganti root default dari object koordinat
+   },
+  {
    $sort: {
     "koordinat.created": -1
    }
