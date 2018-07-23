@@ -70,7 +70,7 @@ block content
 
      for(i=0; i<locations.length; i++){
       marker = new google.maps.Marker({
-       position: new google.maps.LatLng(locations[i].koordinat.latitude, locations[i].koordinat.longitude),
+       position: new google.maps.LatLng(locations[i].latitude, locations[i].longitude),
        icon: iconBase + 'motorcycle.png',
        map: map
       });
