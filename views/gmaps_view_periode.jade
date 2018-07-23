@@ -40,7 +40,8 @@ block content
    script.
     //set default date today
     //if(document.getElementById("periode").value.equals("mm/dd/yyyy")){
-      document.getElementById("periode").valueAsDate = new Date();
+      var tanggal = !{JSON.stringify(tanggal)};
+      document.getElementById("periode").valueAsDate = new Date(tanggal);
     //}
 
     var btnSearch = document.getElementById("cariGPS");
