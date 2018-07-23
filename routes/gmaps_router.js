@@ -62,9 +62,9 @@ router.post('/date', checkAuth, function(req, res){
    }
   }
  ]).exec(function(err, data){
-  // console.log(data);
   //res.json(data);
   var locations = JSON.stringify(data);
+  console.log(locations);
   res.render('gmaps_view_periode',{
    datalokasi: locations,
    tanggal : today
