@@ -23,6 +23,7 @@ router.get('/all', checkAuth, function(req, res) {
     });
    }
   }, function(err, data){
+    console.log(data.locations);
    res.render('gmaps_view_all',{
     datalokasi: data.locations
    });
@@ -66,10 +67,10 @@ router.post('/date', checkAuth, function(req, res){
   }
  ]).exec(function(err, data){
   //res.json(data);
-  var locations = JSON.stringify(data);
-  console.log(locations);
+  // var locations = JSON.stringify(data);
+  // console.log(locations);
   res.render('gmaps_view_periode',{
-   datalokasi: locations,
+   datalokasi: data,
    tanggal : today
   });
  });
