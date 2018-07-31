@@ -72,7 +72,8 @@ block content
        label(style="margin-top: 15px") Start Realtime Maps
        br
        label.switch
-        input#start_maps(type='checkbox' checked=data_relay.realtime_gps)
+        //input#start_maps(type='checkbox' checked=data_relay.realtime_gps)
+        input#start_maps(type='checkbox')
         span.slider.round
        br
     
@@ -90,7 +91,7 @@ block content
     var btnStartRealtimeMaps = document.getElementById('start_maps');
     
     btnStartRealtimeMaps.addEventListener('change', ()=>{
-     if(gps.checked){
+     if(btnStartRealtimeMaps.checked){
       this.sc.emit('activate_realtime_gps', {msg: true});
      }
      else{

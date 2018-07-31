@@ -66,6 +66,12 @@ socket.on('activate_realtime_gps', (data)=>{
   io.emit('activate_realtime_gps', {msg: data.msg});
 });
 
+//Settup socket untuk realtime maps
+socket.on('activate_python_gps', (data)=>{
+  console.log('activate_python_gps', data.msg);
+  io.emit('activate_python_gps', {msg: data.msg});
+});
+
  //Settup statusbuzzer
  socket.on('statusbuzzer', (data)=>{
   console.log('statusbuzzer : ', data.msg);

@@ -97,7 +97,7 @@ block content
         span.slider.round
        br
 
-       label Start Realtime GPS
+       label Start GPS
        br
        label.switch
         input#statusgps(type='checkbox' checked=data_relay.realtime_gps)
@@ -184,10 +184,10 @@ block content
 
     gps.addEventListener('change', ()=>{
      if(gps.checked){
-      sc.emit('activate_realtime_gps', {msg: true});
+      sc.emit('activate_python_gps', {msg: true});
      }
      else{
-      sc.emit('activate_realtime_gps', {msg: false});
+      sc.emit('activate_python_gps', {msg: false});
      }
     });
 
