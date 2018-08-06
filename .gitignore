@@ -1,1 +1,7 @@
 /node_modules
+/Cache
+/CachedData
+/CachedExtensions
+/GPUCache
+/Local Storage
+/logs
